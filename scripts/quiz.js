@@ -132,7 +132,7 @@ const setQuestion = (curr) => {
     currQues=`${quesNo+1}.`+ QuestionArr[curr].question;
     corr=QuestionArr[curr].correctAnswer;
 
-    document.querySelector(".ques").innerText =`${quesNo+1}.`+ QuestionArr[curr].question;
+    document.querySelector(".ques").innerText =`${quesNo+1}.`+ QuestionArr[curr].question+" ?";
 
     //Now here i will try to generate a random number between 0 to 3
     // so that i can place my correct answer at different postion in
@@ -203,7 +203,7 @@ const handleSelect=(e)=>{
     for (const x of rest) {
         x.style.backgroundColor="#fff"
     }
-    selected.style.backgroundColor="green"
+    selected.style.backgroundColor="#f2f2f2"
 }
 
 

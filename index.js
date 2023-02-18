@@ -26,7 +26,7 @@ const handleLogin=()=>{
     })
     console.log(loggedin);
     if(loggedin){
-        console.log("Sign In successful");
+        window.location.href="./components/quiz.html"
     }
     else{
         alert("invalid credentials");
