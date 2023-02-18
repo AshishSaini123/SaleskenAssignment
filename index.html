@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+   <div class="hero">
+    <div class="form-box">
+        <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" class="toggle" onclick="Login()">Log In</button>
+            <button type="button" class="toggle" onclick="Register()">Sign Up</button>
+        </div>
+        <form id="login" class="input-group" onsubmit="handleLogin(event)">
+            <input type="text" class="input-field email1" placeholder="Email here" required/>
+            <input type="text" class="input-field pass1" placeholder="Password here" required/>
+            <button type="submit" class="submit-btn">Log In</button>
+        </form>
+
+        <form  id="register" class="input-group" onsubmit="handleRegister(event)">
+            <input type="email" class="input-field email2" placeholder="Your mail here" required/>
+            <input type="password" class="input-field pass2" placeholder="Set password" required/>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+   </div>
+</body>
+</html>
+<script src="./index.js"></script>
