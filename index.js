@@ -20,7 +20,17 @@ const handleLogin=()=>{
     let email=document.querySelector(".email1").value;
     let pass=document.querySelector(".pass1").value;
     console.log(email,pass);
-    let users=JSON.parse(localStorage.getItem("setUsers"));
+    let users=JSON.parse(localStorage.getItem("setUsers")) || [];
+    let loggedin=users.find((ele)=>{
+        return ele.email===email && ele.pass===pass;
+    })
+    console.log(loggedin);
+    if(loggedin){
+        console.log("Sign In successful");
+    }
+    else{
+        alert("invalid credentials");
+    }
 }
 
 const handleRegister=()=>{
