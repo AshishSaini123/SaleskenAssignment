@@ -124,27 +124,86 @@ let QuestionArr = [
 ];
 let quesNo = 0;
 
+let currQues;
+let corr;
 const setQuestion = (curr) => {
+
+    //Here firstly i will set the question
+    currQues=`${quesNo+1}.`+ QuestionArr[curr].question;
+    corr=QuestionArr[curr].correctAnswer;
+
     document.querySelector(".ques").innerText =`${quesNo+1}.`+ QuestionArr[curr].question;
-    document.querySelector(".one").innerText = QuestionArr[curr].incorrectAnswers[0];
-    document.querySelector(".two").innerText = QuestionArr[curr].incorrectAnswers[1];
-    document.querySelector(".three").innerText = QuestionArr[curr].incorrectAnswers[2];
-    document.querySelector(".four").innerText = QuestionArr[curr].question;
+
+    //Now here i will try to generate a random number between 0 to 3
+    // so that i can place my correct answer at different postion in
+    //diff questions
+    const randNo=Math.floor(Math.random()*(4-0)+0)
+    let reqArr=['one','two','three','four'];
+    let req=document.querySelector(`.${reqArr[randNo]}`);
+    //Here i have placed the correct ans
+    req.innerText=QuestionArr[curr].correctAnswer;
+
+    //this variable is for taking the other options from incorrect array
+    let i=0;
+   
+
+    //this loop is for placing the incorrect options
+    for(let x=0;x<reqArr.length;x++){
+        if(reqArr[randNo]!==reqArr[x]){
+            document.querySelector(`.${reqArr[x]}`).innerText = QuestionArr[curr].incorrectAnswers[i];
+            i++;
+        }
+    }
 };
 
+//Here i am using this because at first i want to show the first question
 if(quesNo==0){
     setQuestion(0);
 }
 
+// this function is for when the user click on next or skip
+let ans;
 const handleClick=()=>{
+    let rest=document.querySelectorAll(".option");
+    for (const x of rest) {
+        x.style.backgroundColor="#fff"
+    }
     if(quesNo<=8){
-        quesNo++;
-    setQuestion(quesNo);
+        //Now i am trying to store the question and ans of user on ls
+
+        // let userArr=JSON.parse(localStorage.getItem("setUsers"));
+        
+        let userQues={
+            currQues,
+            ans,
+            corr
+        }
+
+        console.log(userQues)
+        let userDataofQuestions=JSON.parse(localStorage.getItem("userQues")) || [];
+        console.log(userDataofQuestions)
+        userDataofQuestions=[...userDataofQuestions,userQues];
+        localStorage.setItem("userQues",JSON.stringify(userDataofQuestions));
+
+
+         setTimeout(()=>{
+            quesNo++;
+            setQuestion(quesNo);
+         },500)
+        
+
     }
 }
 
+// this function is for which option the user select
 const handleSelect=(e)=>{
-    console.log(e.target);
+    let selected=e.target;
+    ans=e.target.innerText;
+    let rest=document.querySelectorAll(".option");
+    for (const x of rest) {
+        x.style.backgroundColor="#fff"
+    }
+    selected.style.backgroundColor="green"
 }
 
 
