@@ -7,6 +7,26 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div class="quiz-container">
+        <div class="question-container">
+            <div class="question">
+                <p class="ques"></p>
+                <div class="options">
+                    <li class="option one" name="one" onclick="handleSelect(event)"></li>
+                    <li class="option two" name="two" onclick="handleSelect(event)"></li>
+                    <li class="option three" name="three" onclick="handleSelect(event)"></li>
+                    <li class="option four" name="four" onclick="handleSelect(event)"></li>
+                </div>
+            </div>
+            <div class="btns">
+                <button type="button" class="skip" onclick="handleClick()">Skip</button>
+                <button type="button" class="Next" onclick="handleClick()">Next</button>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
+
+<script src="../scripts/quiz.js"></script>
