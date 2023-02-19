@@ -25,13 +25,8 @@ const handleLogin=()=>{
         return ele.email===email && ele.pass===pass;
     })
     loggedin.status=true;
-    // users.find(ele=>{
-    //     if(ele.email===email){
-    //         ele=loggedin;
-    //     }
-    // })
-    // console.log(loggedin);
-    // console.log(users);
+    
+
     localStorage.setItem("curruser",JSON.stringify(loggedin));
     if(loggedin){
         console.log('success')
@@ -40,6 +35,8 @@ const handleLogin=()=>{
     else{
         alert("invalid credentials");
     }
+
+    document.getElementById("login").reset();
 }
 
 const handleRegister=()=>{
@@ -59,6 +56,7 @@ const handleRegister=()=>{
     localStorage.setItem("setUsers",JSON.stringify(users));
     let use=JSON.parse(localStorage.getItem("setUsers"));
     console.log(use);
+    document.getElementById("register").reset();
     Login();
 
 }
