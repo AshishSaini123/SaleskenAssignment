@@ -24,8 +24,17 @@ const handleLogin=()=>{
     let loggedin=users.find((ele)=>{
         return ele.email===email && ele.pass===pass;
     })
-    console.log(loggedin);
+    loggedin.status=true;
+    // users.find(ele=>{
+    //     if(ele.email===email){
+    //         ele=loggedin;
+    //     }
+    // })
+    // console.log(loggedin);
+    // console.log(users);
+    localStorage.setItem("curruser",JSON.stringify(loggedin));
     if(loggedin){
+        console.log('success')
         window.location.href="./components/quiz.html"
     }
     else{
@@ -42,6 +51,7 @@ const handleRegister=()=>{
     let user={
         email,
         pass,
+        status:false,
     }
 
     let users=JSON.parse(localStorage.getItem("setUsers")) || [];
@@ -49,5 +59,6 @@ const handleRegister=()=>{
     localStorage.setItem("setUsers",JSON.stringify(users));
     let use=JSON.parse(localStorage.getItem("setUsers"));
     console.log(use);
+    Login();
 
 }

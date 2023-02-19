@@ -158,6 +158,7 @@ const setQuestion = (curr) => {
 
 //Here i am using this because at first i want to show the first question
 if(quesNo==0){
+    localStorage.removeItem("userQues");
     setQuestion(0);
 }
 
@@ -168,7 +169,7 @@ const handleClick=()=>{
     for (const x of rest) {
         x.style.backgroundColor="#fff"
     }
-    if(quesNo<=8){
+    if(quesNo<=9){
         //Now i am trying to store the question and ans of user on ls
 
         // let userArr=JSON.parse(localStorage.getItem("setUsers"));
@@ -179,20 +180,24 @@ const handleClick=()=>{
             corr
         }
 
-        console.log(userQues)
+        // console.log(userQues)
         let userDataofQuestions=JSON.parse(localStorage.getItem("userQues")) || [];
-        console.log(userDataofQuestions)
+        // console.log(userDataofQuestions)
         userDataofQuestions=[...userDataofQuestions,userQues];
         localStorage.setItem("userQues",JSON.stringify(userDataofQuestions));
 
 
-         setTimeout(()=>{
-            quesNo++;
-            setQuestion(quesNo);
-         },500)
-        
-
+        if(quesNo<=8){
+            setTimeout(()=>{
+                quesNo++;
+                setQuestion(quesNo);
+             },500)
+        }
+        else{
+            window.location.href="./result.html";
+        }
     }
+
 }
 
 // this function is for which option the user select
