@@ -20,7 +20,7 @@ let QuestionDetails=(data)=>{
     let div=document.createElement("div");
     data.map((ele)=>{
         let div1=document.createElement("div");
-        let ques=document.createElement("p");
+        let ques=document.createElement("h3");
         ques.innerText=ele.currQues;
         let corr=document.createElement("p");
         corr.innerText=`Correct answer is : `+ele.corr;
@@ -37,7 +37,7 @@ let QuestionDetails=(data)=>{
         div.append(div1);
     })
     document.querySelector(".question-details").append(div);
-    
+
 }
 
 QuestionDetails(quesData);
